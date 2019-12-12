@@ -1,0 +1,15 @@
+RewriteEngine On
+
+RewriteCond %{DOCUMENT_ROOT}/public%{REQUEST_URI} -f
+RewriteRule ^ %{DOCUMENT_ROOT}/public%{REQUEST_URI} [L]
+
+RewriteCond %{DOCUMENT_ROOT}/api%{REQUEST_URI} -f
+RewriteRule ^ %{DOCUMENT_ROOT}/api%{REQUEST_URI} [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^/]+)/$ $1.php
+RewriteRule ^([^/]+)/([^/]+)/$ /$1/$2.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !(\.[a-zA-Z0-9]{1,5}|/)$
+RewriteRule (.*)$ /$1/ [R=301,L]
