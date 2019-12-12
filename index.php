@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Омский Государственный Технический Университет</title>
+	<title>Омский Государственный Технический Университет | Планы мероприятий</title>
 	
 	<link rel="shortcut icon" href="./public/16.ico" type="image/x-icon">
 	<link rel="icon" href="./public/16.ico" type="image/x-icon">
@@ -18,8 +18,8 @@
 	<![endif]-->
 	<style> 
 	body {font-family: 'Roboto', sans-serif;}
-	.btn { text-align: left;}
-	.btn-label {position: relative;left: -12px;display: inline-block;padding: 6px 12px; color: #eee;border-radius: 3px;margin-right:-8px;}
+	.btn { text-align: left; display: flex; flex-direction: row;align-items: center;}
+	.btn-label {position: relative;left: -12px;display: inline-block;padding: 6px 12px; height: 100%; color: #eee;border-radius: 3px;margin-right:-4px;}
 	.btn-labeled {padding-top: 0;padding-bottom: 0;}
 	.word.btn-outline {
 		border: 1px solid #2b579a;
@@ -140,12 +140,12 @@
 			</tbody>
 		</table>
 		
-		<div class="row mt-2 mb-3">
+		<div class="row mt-3 mb-3">
 			<div class="col-sm-12 paddingLeft pagerfwt">
 				<?php if($pages->items_total > 0) { ?>
 					<?php 
-						if(is_numeric($pages->items_per_page) AND $pages->items_per_page < $pages->items_total) { echo "<a href='#ipp=all' class='text-muted'>Показать все ".$pages->items_total."</a>"; }
-						else { echo "<span class='text-muted'>Всего мероприятий: ".$pages->items_total."</span>"; }  
+						if(is_numeric($pages->items_per_page) AND $pages->items_per_page < $pages->items_total) { echo "<a href='".$_SERVER['PHP_SELF']."?ipp=All".$pages->querystring."' class='text-muted'>Показать все ".$pages->items_total."</a>"; }
+						else { echo "<span class='text-muted'>Всего мероприятий: ".$pages->items_total."</span>"; } 
 					?>
 				<?php }?>
 			</div>  

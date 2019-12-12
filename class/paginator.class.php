@@ -186,7 +186,7 @@ class Paginator{
 
 				{
 
-					$this->return .= ($i == $this->current_page And ($_GET['page'] != 'All')) ? "<li class='page-item active'><a title=\"Go to page $i of $this->num_pages\" class=\"page-link\" href=\"#\">$i</a></li> ":"<li class='page-item'><a class=\"page-link\" title=\"Go to page $i of $this->num_pages\" href=\"$_SERVER[PHP_SELF]?page=$i&ipp=$this->items_per_page$this->querystring\">$i</a></li> ";
+					$this->return .= ($i == $this->current_page And ($_GET['page'] != 'All')) ? "<li class='page-item active'><a title=\"Страница $i из $this->num_pages\" class=\"page-link\" href=\"#\">$i</a></li> ":"<li class='page-item'><a class=\"page-link\" title=\"Страница $i из $this->num_pages\" href=\"$_SERVER[PHP_SELF]?page=$i&ipp=$this->items_per_page$this->querystring\">$i</a></li> ";
 					
 
 				}
