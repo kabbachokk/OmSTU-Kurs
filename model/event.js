@@ -1,4 +1,13 @@
-const con = require('./db');
+const 
+    query       = require('../helpers/query'),
+    connection  = require('../helpers/connection'),
+    config      = {
+        host: process.env.DB_HOST,
+        user: process.env.DB_USER,
+        password: process.env.DB_PASS,
+        database: process.env.DB
+    };
+
 module.exports = 
     {
         add : (data) => { return new Promise(
@@ -6,8 +15,8 @@ module.exports =
                 connection(config).then(
                     con => {
                         let q = `
-                            INSERT events(status_id,title,link,date,place,participants,footing) 
-                            VALUES (?,?,?,?,?,?,?);
+                            INSERT events(statusid,title,link,date,place,participants,footing,responsible) 
+                            VALUES (?,?,?,?,?,?,?,?);
                         `;
                         query(con, q, Object.values(data)).then(
                             result => resolve(result[0]),
@@ -24,8 +33,11 @@ module.exports =
                 connection(config).then(
                     con => {
                         let q = `
-                            SELECT * FROM events WHERE id = ${id}
-                            JOIN status ON (events.status_id=status.id)
+                            SELECT status.name as status_name, status.id as status_id, title, link, date, place, participants, footing, responsible 
+                            FROM events 
+                            JOIN status ON (events.statusid=status.id)
+                            WHERE events.id = ${id}
+                            
                         `;
                         query(con, q).then(
                             result => resolve(result[0]),
@@ -37,33 +49,16 @@ module.exports =
             });   
         },
 
-        getAll : () => { return new Promise(
-            (resolve, reject) => {
-                connection(config).then(
-                    con => {
-                        let q = `
-                            SELECT * FROM events 
-                            JOIN status ON (events.status_id=status.id)
-                        `;
-                        query(con, q).then(
-                            result => resolve(result),
-                            err => reject(err) 
-                        );
-                    },
-                    err => reject(err) 
-                )
-            }); 
-        },
-
         getByYear : (year) => { return new Promise(
             (resolve, reject) => {
                 connection(config).then(
                     con => {
                         let q = `
-                            SELECT * FROM events 
-                            JOIN status ON (events.status_id=status.id)
+                            SELECT MONTH(date) as date_m, DAY(date) as date_d, id FROM events 
                             WHERE YEAR(date) = ${year}
+                            ORDER BY date
                         `;
+                        //JOIN status ON (events.status_id=status.id), DATE_FORMAT(date, "%m") AS date
                         query(con, q).then(
                             result => resolve(result),
                             err => reject(err) 
@@ -74,13 +69,12 @@ module.exports =
             }); 
         },
 
-        getYears : () => { return new Promise(
+        getStatus : () => { return new Promise(
             (resolve, reject) => {
                 connection(config).then(
                     con => {
                         let q = `
-                            SELECT DISTINCT YEAR(date)
-                            FROM events
+                            SELECT * FROM status
                         `;
                         query(con, q).then(
                             result => resolve(result),
@@ -92,67 +86,51 @@ module.exports =
             }); 
         },
 
-        getByStatusId : (status_id) => { return new Promise(
-            function(resolve, reject){
-                let query = `
-                    SELECT * FROM events 
-                    JOIN status ON (events.status_id=status.id)
-                    WHERE status_id = ${status_id}
-                `;
-                con.query(query, (err, result) => {
-                    if (err) reject(err);
-                    resolve(result);
-                });
-            });
-        },
-
-        getStatus : () => { return new Promise(
-            function(resolve, reject){
-                let query = `
-                    SELECT * FROM status
-                `;
-                con.query(query, (err, result) => {
-                    if (err) reject(err);
-                    resolve(result);
-                });
-            });
-        },
-
-        update : (id, data) => { return new Promise(
-            function(resolve, reject){
-                let query = `
-                    UPDATE events
-                    SET
-
-                    status_id = ?,
-                    title = ?,
-                    link = ?,
-                    date = ?,
-                    place = ?,
-                    participants = ?,
-                    footing = ?,
-                    responsible = ?
-
-                    WHERE id = ${id}
-                `;
-                con.query(query, Object.values(data), (err, result) => {
-                    if (err) reject(err);
-                    resolve(result[0]);
-                });
+        update : (id, data) => { return new Promise( 
+            (resolve, reject) => {
+                connection(config).then(
+                    con => {
+                        let q = `
+                            UPDATE events
+                            SET
+    
+                            statusid = ?,
+                            title = ?,
+                            link = ?,
+                            date = ?,
+                            place = ?,
+                            participants = ?,
+                            footing = ?,
+                            responsible = ?
+    
+                            WHERE id = ${id}
+                        `;
+                        query(con, q, Object.values(data)).then(
+                            result => resolve(result[0]),
+                            err => reject(err) 
+                        );
+                    },
+                    err => reject(err) 
+                )
             });
         },
 
         delete : (id) => { return new Promise(
-            function(resolve, reject){
-                let query = `
-                    DELETE FROM events
-                    WHERE id = ${id}
-                `;
-                con.query(query, (err, result) => {
-                    if (err) reject(err);
-                    resolve(result[0]);
-                });
-            });
+            (resolve, reject) => {
+                connection(config).then(
+                    con => {
+                        let q = `
+                            DELETE FROM events
+                            WHERE id = ${id}
+                        `;
+                        query(con, q).then(
+                            result => resolve(result[0]),
+                            err => reject(err) 
+                        );
+                    },
+                    err => reject(err) 
+                )
+            }); 
         },
     }
 

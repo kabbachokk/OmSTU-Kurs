@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Добавить мероприятие</title>
+  <link rel="stylesheet" href="./assets/css/forms.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="navbar">
+
+</div>
+<form id="cal" action="/add" method="post">
+
+ 	<header class="row">
+		<img src="./assets/img/100x.png" height="95">
+		<p style="margin-left:12px; font-size:16px; line-height: 25px">Омский<br> Государственный<br> Технический Университет</p>
+    </header>
+    <div class="row">
+        <div class="col">
+            <div class="group">
+                <label>Название мероприятия:</label>
+                <input type="text" name="title" value="<%= event.title %>"/>
+            </div>
+            <div class="group">
+                <label>Ссылка:</label>
+                <input type="text" name="link" value="<%= event.link %>"/>
+            </div>
+            <div class="group">
+                <label>Основание:</label>
+                <input type="text" name="footing" value="<%= event.footing %>"/>
+            </div>
+            <div class="group">
+                <label>Место проведения:</label>
+                <input type="text" name="place" value="<%= event.place %>"/>
+            </div>
+        </div>
+        <div class="col">
+            <div class="group">
+                <label>Статус:</label>
+                <select required name="status">
+                    <% status.forEach(function(s){ %>
+                        <% if(event.statusid === s.id){ %>
+                            <option selected value="<%= s.id %>"><%= s.name %></option>
+                        <% } else { %>  
+                            <option value="<%= s.id %>"><%= s.name %></option>
+                        <% } %>
+                        
+                    <% }); %>
+                </select>
+            </div>
+            <div class="group">
+                <label>Ответственный за проведение:</label>
+                <input type="text" name="responsible"/>
+            </div>
+            <div class="group">
+                <label>Количество участников:</label>
+                <input type="number" name="participants"/>
+            </div>
+            <div class="group">
+                <button type="submit">Продолжить</button>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="date" value="<%= date %>" />
+    <footer class="row">
+        <%= message %>
+    </footer>
+</form>
+
+<!-- partial -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</body>
+</html>

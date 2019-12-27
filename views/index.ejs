@@ -1,5 +1,151 @@
-<% if (!user) { %>
-	<p>Welcome! Please <a href="/login">log in</a>.</p>
-<% } else { %>
-	<p>Hello, <%= user.username %>. View your <a href="/profile">profile</a>.</p>
-<% } %>
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Calendar</title>
+  <link rel="stylesheet" href="./assets/css/calendar.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="navbar">
+
+  <% if(loggedIn){ %>
+    <a href="./logout">Выйти</a>
+    <a id="report" href="#">Отчет</a>
+    <a id="request" href="#">Заявка</a id="request">
+  <% } else { %>  
+    <a href="./login">Войти</a>
+  <% } %>
+</div>
+<div id="cal">
+
+  <header>
+	<img src="./assets/img/100x.png" height="95">
+	<p style="margin-left:12px; font-size:16px; line-height: 25px">Омский<br> Государственный<br> Технический Университет</p>
+	<div id="calt">
+		<h1 id="caltitle"></h1>
+		<h2>
+			<a id="prev" href=""></a>
+			<a id="next" href=""></a>
+		</h2>
+	</div>
+  </header>
+
+  <table>
+    <tr>
+      <td>
+        <div class="day mo"></div>
+        <div class="day">Вс</div>
+        <div class="day">Пн</div>
+        <div class="day">Вт</div>
+        <div class="day">Ср</div>
+        <div class="day">Чт</div>
+        <div class="day">Пт</div>
+        <div class="day">Сб</div>
+        <div class="day">Вс</div>
+        <div class="day">Пн</div>
+        <div class="day">Вт</div>
+        <div class="day">Ср</div>
+        <div class="day">Чт</div>
+        <div class="day">Пт</div>
+        <div class="day">Сб</div>
+        <div class="day">Вс</div>
+        <div class="day">Пн</div>
+        <div class="day">Вт</div>
+        <div class="day">Ср</div>
+        <div class="day">Чт</div>
+        <div class="day">Пт</div>
+        <div class="day">Сб</div>
+        <div class="day">Вс</div>
+        <div class="day">Пн</div>
+        <div class="day">Вт</div>
+        <div class="day">Ср</div>
+        <div class="day">Чт</div>
+        <div class="day">Пт</div>
+        <div class="day">Сб</div>
+        <div class="day">Вс</div>
+        <div class="day">Пн</div>
+        <div class="day">Вт</div>
+        <div class="day">Ср</div>
+        <div class="day">Чт</div>
+        <div class="day">Пт</div>
+        <div class="day">Сб</div>
+        <div class="day">Вс</div>
+        <div class="day">Пн</div>
+      </td>
+      <td>
+        <table id="months">
+          <tr id="mtoprow">
+            <td class="mc" valign="top"><span id="p0"></span></td>
+            <td class="mc" valign="top"><span id="p1"></span></td>
+            <td class="mc" valign="top"><span id="p2"></span></td>
+            <td class="mc" valign="top"><span id="p3"></span></td>
+            <td class="mc" valign="top"><span id="p4"></span></td>
+            <td class="mc" valign="top"><span id="p5"></span></td>
+            <td class="mc" valign="top"><span id="p6"></span></td>
+            <td class="mc" valign="top"><span id="p7"></span></td>
+            <td class="mc" valign="top"><span id="p8"></span></td>
+            <td class="mc" valign="top"><span id="p9"></span></td>
+            <td class="mc" valign="top"><span id="p10"></span></td>
+            <td class="mc" valign="top"><span id="p11"></span></td>
+          </tr>
+        </table>
+      </td>
+    </tr>	
+  </table>
+</div>
+
+<div id="tmp">
+  <span id="m0" style="display:none">
+    <div class="months">
+      <div class="mo">Month</div>
+      <div class="dt"></div>
+      <div class="dt"></div>
+      <div class="dt"></div>
+      <div class="dt"></div>
+      <div class="dt"></div>
+      <div class="dt"></div>
+      <div class="dt"></div>
+      <div class="dt"></div>
+      <div class="dt"></div>
+      <div class="dt"></div>
+      <div class="dt"></div>
+      <div class="dt"></div>
+      <div class="dt"></div>
+      <div class="dt"></div>
+      <div class="dt"></div>
+      <div class="dt"></div>
+      <div class="dt"></div>
+      <div class="dt"></div>
+      <div class="dt"></div>
+      <div class="dt"></div>
+      <div class="dt"></div>
+      <div class="dt"></div>
+      <div class="dt"></div>
+      <div class="dt"></div>
+      <div class="dt"></div>
+      <div class="dt"></div>
+      <div class="dt"></div>
+      <div class="dt"></div>
+      <div class="dt"></div>
+      <div class="dt"></div>
+      <div class="dt"></div>
+      <div class="dt"></div>
+      <div class="dt"></div>
+      <div class="dt"></div>
+      <div class="dt"></div>
+      <div class="dt"></div>
+      <div class="dt"></div>
+    </div>
+  </span>
+  
+</div>
+
+<!-- partial -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script  src="./assets/js/calendar.js"></script>
+</body>
+</html>

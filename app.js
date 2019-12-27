@@ -14,10 +14,11 @@ app.set('view engine', 'ejs');
 
 app.disable('x-powered-by');
 
-app.use(require('helmet')())
+app.use(require('helmet')());
 app.use(require('connect-flash')());
 app.use(require('morgan')('combined'));
 app.use(require('body-parser').urlencoded({ extended: true }));
+app.use(require('body-parser').json());
 app.use(require('express-session')({
     name: process.env.SESSION_NAME, 
     secret: process.env.SESSION_SECRET, 

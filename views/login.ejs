@@ -1,13 +1,37 @@
-<form action="/login" method="post">
-	<div>
-	<label>Username:</label>
-	<input type="text" name="username"/><br/>
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Calendar</title>
+  <link rel="stylesheet" href="./assets/css/login.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="navbar">
+
+</div>
+<form id="cal" action="/login" method="post">
+
+ 	<header>
+		<img src="./assets/img/100x.png" height="95">
+		<p style="margin-left:12px; font-size:16px; line-height: 25px">Омский<br> Государственный<br> Технический Университет</p>
+	
+  	</header>
+  	<div class="group">
+		<label>Имя пользователя:</label>
+		<input type="text" name="username"/>
 	</div>
-	<div>
-	<label>Password:</label>
-	<input type="password" name="password"/>
+	<div class="group">
+		<label>Пароль:</label>
+		<input type="password" name="password"/>
 	</div>
-	<div>
-	<input type="submit" value="Submit"/>
-	</div>
+	<button type="submit">Продолжить</button>
 </form>
+
+<!-- partial -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+</body>
+</html>
