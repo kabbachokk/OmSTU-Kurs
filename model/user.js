@@ -19,6 +19,7 @@ module.exports =
                             result => resolve(result[0]),
                             err =>  reject(err) 
                         );
+                        con.end();
                     },
                     err =>  reject(err) 
                 )
@@ -34,6 +35,7 @@ module.exports =
                             result => resolve(result[0]),
                             err =>  reject(err) 
                         );
+                        con.end();
                     },
                     err =>  reject(err) 
                 )

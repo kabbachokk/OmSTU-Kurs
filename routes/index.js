@@ -58,7 +58,7 @@ module.exports = (passport) => {
             status => res.render('add', { date: req.query.date, status, message: req.flash('message')}),
             err => { 
                 console.error(err);
-                throw {status: 500, message: 'Что-то пошло не так.'};                     
+                res.render('500');                     
             }
         );
     });
@@ -90,13 +90,13 @@ module.exports = (passport) => {
                     status => res.render('edit', { status, event, message: req.flash('message')}),
                     err => { 
                         console.error(err);
-                        throw {status: 500, message: 'Что-то пошло не так.'};                     
+                        res.render('500');                     
                     }
                 ); 
             },
             err => { 
                 console.error(err);
-                throw {status: 500, message: 'Что-то пошло не так.'};               
+                res.render('500');                
             }
         );
     });

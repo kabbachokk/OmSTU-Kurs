@@ -56,6 +56,14 @@ passport.deserializeUser((id, cb) => {
 
 app.use('/', require('./routes')(passport));
 
+
+app.all('/404', (req, res) => {
+    res.status(404).render('404');
+});
+app.all('/500', (req, res) => {
+    res.status(500).render('500');
+});
+
 app.all('*', (req, res) => {
     res.status(404).render('404');
 });
