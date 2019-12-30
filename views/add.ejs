@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Добавить мероприятие</title>
-  <link rel="stylesheet" href="./assets/css/forms.css">
+  <link rel="stylesheet" href="/assets/css/forms.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -12,11 +12,11 @@
 
 </div>
 <form id="cal" action="/add" method="post">
-
  	<header class="row">
-		<img src="./assets/img/100x.png" height="95">
+		<img src="/assets/img/100x.png" height="95">
 		<p style="margin-left:12px; font-size:16px; line-height: 25px">Омский<br> Государственный<br> Технический Университет</p>
     </header>
+    <h2>Создать</h2>
     <div class="row">
         <div class="col">
             <div class="group">
@@ -39,11 +39,15 @@
         <div class="col">
             <div class="group">
                 <label>Статус:</label>
-                <select required name="status">
-                    <% status.forEach(function(s){ %>
-                        <option value="<%= s.id %>"><%= s.name %></option>
-                    <% }); %>
-                </select>
+                <div class="select">
+                    <label>
+                        <select name="status">
+                            <% status.forEach(function(s){ %>
+                                <option value="<%= s.id %>"><%= s.name %></option>
+                            <% }); %>
+                        </select>
+                    </label>
+                </div>
             </div>
             <div class="group">
                 <label>Ответственный за проведение:</label>
@@ -54,7 +58,7 @@
                 <input type="number" name="participants"/>
             </div>
             <div class="group">
-                <button type="submit">Продолжить</button>
+                <button  class="btn" type="submit">Добавить</button>
             </div>
         </div>
     </div>

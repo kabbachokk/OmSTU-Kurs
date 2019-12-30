@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Добавить мероприятие</title>
-  <link rel="stylesheet" href="./assets/css/forms.css">
+  <link rel="stylesheet" href="/assets/css/forms.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -11,12 +11,12 @@
 <div id="navbar">
 
 </div>
-<form id="cal" action="/add" method="post">
-
+<form id="cal" method="POST">
  	<header class="row">
-		<img src="./assets/img/100x.png" height="95">
-		<p style="margin-left:12px; font-size:16px; line-height: 25px">Омский<br> Государственный<br> Технический Университет</p>
+		<img src="/assets/img/100x.png" height="95">
+        <p style="margin-left:12px; font-size:16px; line-height: 25px">Омский<br> Государственный<br> Технический Университет</p>
     </header>
+    <h2>Редактировать</h2>
     <div class="row">
         <div class="col">
             <div class="group">
@@ -39,31 +39,37 @@
         <div class="col">
             <div class="group">
                 <label>Статус:</label>
-                <select required name="status">
-                    <% status.forEach(function(s){ %>
-                        <% if(event.statusid === s.id){ %>
-                            <option selected value="<%= s.id %>"><%= s.name %></option>
-                        <% } else { %>  
-                            <option value="<%= s.id %>"><%= s.name %></option>
-                        <% } %>
-                        
-                    <% }); %>
-                </select>
+                <div class="select">
+                    <label>
+                        <select name="status">
+                            <% status.forEach(function(s){ %>
+                                <% if(event.statusid === s.id){ %>
+                                    <option selected value="<%= s.id %>"><%= s.name %></option>
+                                <% } else { %>  
+                                    <option value="<%= s.id %>"><%= s.name %></option>
+                                <% } %>
+                                
+                            <% }); %>
+                        </select>
+                    </label>
+                </div>
             </div>
             <div class="group">
                 <label>Ответственный за проведение:</label>
-                <input type="text" name="responsible"/>
+                <input type="text" name="responsible" value="<%= event.responsible%>"/>
             </div>
             <div class="group">
                 <label>Количество участников:</label>
-                <input type="number" name="participants"/>
+                <input type="number" name="participants" value="<%= event.participants %>"/>
             </div>
-            <div class="group">
-                <button type="submit">Продолжить</button>
+            <div class="groupbtn">
+                <button type="submit" class="btn" formaction="/edit">Сохранить</button>
+                <button type="submit" class="btn danger" formaction="/delete">Удалить</button>
             </div>
         </div>
     </div>
-    <input type="hidden" name="date" value="<%= date %>" />
+    <input type="hidden" name="id" value="<%= event.id %>" />
+    <input type="hidden" name="date" value="<%= event.date %>" />
     <footer class="row">
         <%= message %>
     </footer>
@@ -71,5 +77,6 @@
 
 <!-- partial -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 </body>
 </html>

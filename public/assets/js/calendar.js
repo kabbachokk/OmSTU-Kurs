@@ -185,8 +185,11 @@
 				renderCalendar(1, 12, year);
 				data.forEach(e => 
 					$("#p"+ (e.date_m - 1) + " .dt:contains('"+ e.date_d +"')")
+						.filter(function () {  
+							return $(this).text() == e.date_d;
+						})
 						.removeClass('empty')
-						.addClass('go')
+						.addClass('go '+e.date_d)
 						.data({ 'id': e.id })
 				);
 				$('.go').click(function() {

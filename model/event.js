@@ -22,6 +22,7 @@ module.exports =
                             result => resolve(result[0]),
                             err => reject(err) 
                         );
+                        con.end();
                     },
                     err => reject(err) 
                 )
@@ -33,7 +34,7 @@ module.exports =
                 connection(config).then(
                     con => {
                         let q = `
-                            SELECT status.name as status_name, status.id as status_id, title, link, date, place, participants, footing, responsible 
+                            SELECT events.id, status.name as status_name, statusid, title, link, DATE_FORMAT(date, "%Y-%m-%d") AS date, place, participants, footing, responsible 
                             FROM events 
                             JOIN status ON (events.statusid=status.id)
                             WHERE events.id = ${id}
@@ -43,6 +44,7 @@ module.exports =
                             result => resolve(result[0]),
                             err => reject(err) 
                         );
+                        con.end();
                     },
                     err => reject(err) 
                 )
@@ -63,6 +65,7 @@ module.exports =
                             result => resolve(result),
                             err => reject(err) 
                         );
+                        con.end();
                     },
                     err => reject(err) 
                 )
@@ -80,6 +83,7 @@ module.exports =
                             result => resolve(result),
                             err => reject(err) 
                         );
+                        con.end();
                     },
                     err => reject(err) 
                 )
@@ -109,6 +113,7 @@ module.exports =
                             result => resolve(result[0]),
                             err => reject(err) 
                         );
+                        con.end();
                     },
                     err => reject(err) 
                 )
@@ -127,6 +132,7 @@ module.exports =
                             result => resolve(result[0]),
                             err => reject(err) 
                         );
+                        con.end();
                     },
                     err => reject(err) 
                 )

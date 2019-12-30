@@ -1,6 +1,9 @@
+/* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.23, autoprefixer: v9.7.3) */
+
 * {
   padding: 0; margin: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
 body {
@@ -8,9 +11,15 @@ body {
   background-color: #fff;
   color: #777;
   font-size: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   height: 100vh;
 }
 a:link, a:active, a:visited {
@@ -18,39 +27,78 @@ a:link, a:active, a:visited {
   text-decoration: none;
 }
 header{
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-bottom: 20px;
-  justify-content: flex-start !important;
+  -webkit-box-pack: start !important;
+      -ms-flex-pack: start !important;
+          justify-content: flex-start !important;
+}
+
+header img{
+  margin-left: -5px;
+  padding-right: -5px;
 }
 
 footer {
-  justify-content: flex-end !important;
+  -webkit-box-pack: start !important;
+      -ms-flex-pack: start !important;
+          justify-content: flex-start !important;
+  margin-top: 12px;        
 }
 #cal {
     background-color: #fff;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    box-shadow: 0px 10px 10px -15px rgba(0,0,0,0.21);
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-shadow: 0px 10px 10px -15px rgba(0,0,0,0.21);
+            box-shadow: 0px 10px 10px -15px rgba(0,0,0,0.21);
     border:1px solid #eee;
     border-radius: 5px;
-    align-items: center;
-    justify-content: center;
-    padding: 35px 35px;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding: 30px 35px;
 }
 
 .row {
     width:620px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 
 .group {
     width:295px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     text-align: left;
 }
 .group input{
@@ -64,40 +112,115 @@ footer {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
 }
-button {
-    background: #28508c;
-    width: 295px;
-    height: 51px;
-    color: #fff;
-    border:none;
-    border-radius: 3px;
-    font-size: 16px;
-    font-weight: 600;
-    font-family: 'Roboto', sans-serif;
-    cursor: pointer;
-    margin-bottom: 6px;
-    margin-top: 19px;
+.groupbtn {
+  width:295px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  text-align: left;
 }
-select{
-  -webkit-appearance: button;
-  -webkit-border-radius: 3px;
-  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-  -webkit-padding-end: 20px;
-  -webkit-padding-start: 5px;
-  -webkit-user-select: none;
-  background-image: -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
-  background-position: 97% center;
-  background-repeat: no-repeat;
-  border: 1px solid #AAA;
-  color: #555;
-  font-size: inherit;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+
+button.btn {
+  background: #28508c;
+  width: 100%;
+  height: 51px;
+  color: #fff;
+  border:none;
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+  margin-bottom: 6px;
+  margin-top: 18px;
+}
+
+.groupbtn button:first-child {
+  border-radius: 3px 0 0 3px;
+  border-right: 1px solid #2b579a;
+}
+.groupbtn button:last-child {
+  border-left: 1px solid #ddd;
+  border-radius: 0 3px 3px 0;
+}
+
+button.danger {
+  background-color: #dc3545;
+}
+
+.select {
+  position: relative;
+  
+  float: left;
   width: 295px;
-  height: 39px;
+  height: 40px;
   margin-top: 10px;
   margin-bottom: 14px;
-  font-family: 'Roboto', sans-serif;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  
+  font-size: inherit;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  white-space: nowrap;
+
+  border-radius: 3px;
+  border:1px solid #ddd;
+}
+
+/* IE11 hide native button (thanks Matt!) */
+select::-ms-expand {
+  display: none;
+}
+
+.select:after {
+  content: '<>';
+  font: 17px "Consolas", monospace;
+  color: #333;
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  right: 8px;
+  
+  top: 8px;
+  padding: 0 0 2px;
+  border-bottom: 1px solid #ccc;
+  
+  position: absolute;
+  pointer-events: none;
+}
+
+.select select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* Add some styling */
+  
+  display: block;
+  width: 293px;
+  height: 38px;
+  float: right;
+  margin: 0;
+  padding-left: 12px;
   font-size: 16px;
+  color: #222;
+  background-color: #ffffff;
+  background-image: none;
+  border: none;
+  -ms-word-break: normal;
+  word-break: normal;
+  font-family: 'Roboto', sans-serif;
+  outline: none;
+}
+h2 {
+  font-size: 24px;
+  margin-bottom: 24px;
+  text-align: left;
+  font-family: 'Roboto', sans-serif;
+  margin-right: auto;
 }

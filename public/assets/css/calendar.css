@@ -1,6 +1,9 @@
+/* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.23, autoprefixer: v9.7.3) */
+
 * {
   padding: 0; margin: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
 body {
@@ -59,18 +62,32 @@ h2 {
   font-size: 16px;
 }
 header{
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   height: 160px;
   padding: 0 0 0 38px;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 footer{
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   height: 80px;
   padding: 0 0 0 54px;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-size: 16px;
 }
 footer a:link, footer a:active, footer a:visited{
@@ -83,13 +100,20 @@ footer a:link, footer a:active, footer a:visited{
 }
 #calt {
   text-align: right;
+  display:-webkit-box;
+  display:-ms-flexbox;
   display:flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   margin-left: auto;
 }
 
 
 .dt.go:hover .tooltip{
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 .tooltip {
@@ -100,14 +124,18 @@ footer a:link, footer a:active, footer a:visited{
   padding:5px 10px;
   border:1px solid #eee;
   color: #000;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   text-align: left;
   line-height:24px;
   border-radius: 5px;
   left: 10px;
   width: 200px;
   left: -35px;
-  box-shadow: 0px 10px 10px -15px rgba(0,0,0,0.21);
+  -webkit-box-shadow: 0px 10px 10px -15px rgba(0,0,0,0.21);
+          box-shadow: 0px 10px 10px -15px rgba(0,0,0,0.21);
 }
 .tooltip .title{
   font-weight: bold;
@@ -125,10 +153,13 @@ footer a:link, footer a:active, footer a:visited{
   top: 0;
   margin: 0 auto;
   border-radius: 0 0 5px 5px;
-  box-shadow: 0px 10px 10px -15px rgba(0,0,0,0.21);
+  -webkit-box-shadow: 0px 10px 10px -15px rgba(0,0,0,0.21);
+          box-shadow: 0px 10px 10px -15px rgba(0,0,0,0.21);
   font-size: 15px;
   left: 50%;
-  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
   margin-left:54px;
 }
 

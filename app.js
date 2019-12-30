@@ -34,8 +34,8 @@ passport.use(new Strategy(
     (username, password, cb) => {
         model.user.findByUsername(username).then(
             user => {
-                if (!user) return cb(null, false);
-                if (!bcrypt.compareSync(password, user.password)) return cb(null, false);
+                if (!user) return cb(null, false, {message: 'Не верный логин или пароль.'});
+                if (!bcrypt.compareSync(password, user.password)) return cb(null, false, {message: 'Не верный логин или пароль.'});
                 return cb(null, user);
             },
             err => { return cb(err) }

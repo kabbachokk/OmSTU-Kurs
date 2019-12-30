@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Calendar</title>
-  <link rel="stylesheet" href="./assets/css/login.css">
+  <link rel="stylesheet" href="./assets/css/forms.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 </head>
@@ -13,12 +13,11 @@
 
 </div>
 <form id="cal" action="/login" method="post">
-
  	<header>
-		<img src="./assets/img/100x.png" height="95">
-		<p style="margin-left:12px; font-size:16px; line-height: 25px">Омский<br> Государственный<br> Технический Университет</p>
-	
-  	</header>
+		<img src="./assets/img/100x.png" height="90">
+		<p style="margin-left:8px; font-size:16px; line-height: 25px">Омский<br> Государственный<br> Технический Университет</p>
+	</header>
+	<h2>Войти</h2>
   	<div class="group">
 		<label>Имя пользователя:</label>
 		<input type="text" name="username"/>
@@ -27,7 +26,12 @@
 		<label>Пароль:</label>
 		<input type="password" name="password"/>
 	</div>
-	<button type="submit">Продолжить</button>
+	<div class="group">
+		<button class="btn" type="submit">Продолжить</button>
+	</div>
+	<footer>
+		<%= error %>
+	</footer>
 </form>
 
 <!-- partial -->
